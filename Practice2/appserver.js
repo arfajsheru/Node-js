@@ -7,8 +7,7 @@ const Student = require('./module/student');
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json())
-
-
+require('dotenv').config();
 
 
 app.get('/', (req,res) => {
@@ -24,7 +23,7 @@ const StudentRoutes = require("./routers/studenroutes");
 app.use('/student', StudentRoutes);
 
 
-PORT = 8080;
+const PORT = process.env.PORT || 8080;
 
 app.listen(PORT , () => {
     console.log("server started port number ",PORT);

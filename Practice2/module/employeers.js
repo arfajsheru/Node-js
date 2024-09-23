@@ -11,7 +11,7 @@ const employeeSchema = new mongoose.Schema({
     },
     work: {
         type: [String],  // Array of strings for multiple roles
-        enum: ['fb', 'bd', 'fsd'],  // Only these values are allowed
+        enum: ['fd', 'bd', 'fsd'],  // Only these values are allowed
         require:true
     },
     mobile: {

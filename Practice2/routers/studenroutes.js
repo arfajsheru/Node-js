@@ -1,8 +1,6 @@
 const express = require('express');
 const router = express.Router();
-
 const Student = require('../module/student')
-
 router.post('/' , async(req,res) => {
     try {
         const data = req.body;
@@ -18,6 +16,7 @@ router.post('/' , async(req,res) => {
 });
 
 
+
 router.get('/', async(req,res) => {
     try {
         const data = await Student.find();
@@ -29,6 +28,25 @@ router.get('/', async(req,res) => {
         res.status(500).json({error: "Internal server error"})
     }
 });
+
+
+
+router.get('/:stdtype', async(req,res) => {
+    try {
+        const StdType = req.params.stdtype;
+        if(StdType == 1 || StdType == 2 ||StdType == 3 ||StdType == 4 ||StdType == 5 ||StdType == 6){
+            const response = await Student.find({class: StdType});
+            console.log("Student std data fetched");
+            res.status(200).json(response);
+        }
+        else{
+            res.status(404).json({error: "Invalid stdtype"})
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({error: "Internal server error"})
+    }
+})
 
 
 
@@ -52,6 +70,7 @@ router.put('/:id', async(req,res) => {
         res.status(500).json({error: "Internal server error"})
     }
 });
+
 
 
 router.delete("/:id", async(req,res) => {

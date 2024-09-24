@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const Employee = require('../module/employeers');
+const { json } = require('body-parser');
 
 
 router.post('/', async(req,res) => {
@@ -30,6 +31,23 @@ router.get('/', async(req,res) => {
         res.status(500).json({error: "Internet server error"});
     }
 });
+
+
+router.get('/:worktype', async(req,res) => {
+    try {
+        const workType = req.params.worktype;
+        if(workType == 'fd' || workType == "bd" || workType == "fsd"){
+            const response = await Employee.find({work: workType});
+            console.log("worktype data fetched")
+            res.status(200).json(response);
+        }else{
+            res.status(404).json({error: "Invalid worktype"})
+        }
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({error: "Internet server error"}); 
+    }
+})
 
 router.put('/:id' , async(req,res) => {
     try {

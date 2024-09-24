@@ -6,6 +6,7 @@ const mongoose = require("mongoose");
 const mongoURL  = 'mongodb://localhost:27017/hotel'
 
 
+
 // Connection ko setup kiya
 mongoose.connect(mongoURL, {
     useNewUrlParser: true,

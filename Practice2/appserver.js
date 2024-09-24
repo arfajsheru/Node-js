@@ -6,6 +6,7 @@ const Employee = require('./module/employeers');
 const Student = require('./module/student');
 
 const bodyParser = require('body-parser');
+
 app.use(bodyParser.json())
 require('dotenv').config();
 

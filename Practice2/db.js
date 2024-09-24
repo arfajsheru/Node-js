@@ -6,10 +6,12 @@ require('dotenv').config();
 const mongoDbUrl = process.env.MONGODB_URL;
 
 mongoose.connect(mongoDbUrl, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
 }).then(() => {
-    console.log('MongoDb connected')
-}).catch(() => {
-    console.log("MonogDb connection error");
+    console.log('MongoDB connected');
+}).catch((error) => {
+    console.error('MongoDB connection error:', error.message);
 });
 
 const db = mongoose.connection;

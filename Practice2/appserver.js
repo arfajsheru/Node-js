@@ -22,6 +22,9 @@ app.use('/employee', EmployeeRoutes);
 const StudentRoutes = require("./routers/studenroutes");
 app.use('/student', StudentRoutes);
 
+const cors = require('cors');
+app.use(cors());
+
 
 const PORT = process.env.PORT || 8080;
 

@@ -83,7 +83,7 @@ router.delete("/:id", async(req,res) => {
             return res.status(404).json("Student not found");
         }
 
-        console.log("Student succesfully delted");
+        console.log("Student succesfully deleted");
         res.status(200).json(response);
         
     } catch (error) {

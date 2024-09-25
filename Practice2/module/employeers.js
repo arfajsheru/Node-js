@@ -25,6 +25,14 @@ const employeeSchema = new mongoose.Schema({
     },
     salary: {
         type: Number
+    },
+    username: {
+        type:String,
+        require:true
+    },
+    password: {
+        type:String,
+        require:true
     }
 });
 
